@@ -1,0 +1,1 @@
+- For short, repeated jobs (single images, one transcription), prefer a RunPod serverless endpoint over a pod: it bills only while a job runs plus its idle timeout, and it needs no pod teardown. Create it with REST v2 (`api.runpod.io/v2/serverless`); recipe, existing endpoints and wrappers are in the global `runpod-serverless-endpoints` skill.

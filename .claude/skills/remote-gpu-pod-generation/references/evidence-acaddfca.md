@@ -1,0 +1,1 @@
+"Both were created through REST v2 (`api.runpod.io/v2`), not the deprecated v1." and "Idle endpoints cost nothing" / "the 60 s idle timeout after each job, which also bills. Short bursts of many jobs amortize that; one-off jobs do not."

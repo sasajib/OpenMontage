@@ -1,0 +1,3 @@
+Veo daily allowance on this Pro account was exhausted after 2 clips on 2026-10-31 ("You're out of videos for now"; composer disabled). Plan at most 2 Veo clips per day; images kept working (6+ in a day). A video download can land as an empty `download-*` dir; re-open the chat and download again.
+- Sending: `act` with kind=press Enter (textbox focused) reliably sends. Clicking "Send message" by ref from a `run` script, or `press('Enter')` inside `run`, did NOT send on 2026-10-31. Fill via `run` is fine; send via `act`.
+Assistant: "Every storyboard still looks right, including the cropped sunset clip." / "Veo ... centre-cropped to portrait at compose; used because the daily Veo allowance ran out"

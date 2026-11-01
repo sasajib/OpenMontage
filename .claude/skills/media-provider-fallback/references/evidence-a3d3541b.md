@@ -1,0 +1,2 @@
+{"command":"sed -i 's/\"model\": \"aura-2-zeus-en\"/\"model\": \"aura-2-draco-en\"/; s/Gemini algenib approved but quota-exhausted; Deepgram fallback per d-009; slowed to 0.84x/Gemini algenib quota-exhausted (d-009); v2 voice draco at native speed per user revision (d-010)/' projects/rise-of-facebook/scripts/write_production_artifacts.py"}
+user (last prompt, verbatim): "use deepgram, minimax api expire"

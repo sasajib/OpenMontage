@@ -1,0 +1,1 @@
+FINALIZED pass {'valid_container': True, 'duration_seconds': 92.0, 'resolution': '1920x1080', 'fps': 24.0, 'has_audio': True, 'codec': 'h264', 'file_size_bytes': 134102759, 'issues': []}

@@ -104,3 +104,10 @@ venv/
 
 # Local Wan / diffusers GPU environment
 .venv-wan/
+
+# Autoharness bookkeeping and local browser binaries
+**/.claude/autoharness/
+.claude/skills/**/.sidecar.json
+.claude/skills/**/.sidecar.json.lock
+.claude/skills/**/.ledger.jsonl
+chrome-headless-shell/

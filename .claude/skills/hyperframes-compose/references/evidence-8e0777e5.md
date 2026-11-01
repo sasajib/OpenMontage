@@ -1,0 +1,2 @@
+{"check": {"exit_code": 1, "stdout_tail": "", "stderr_tail": "npm error could not determine executable to run\nnpm error A complete log of this run can be found in: /home/sasajib/.npm/_logs/2026-10-31T13_27_23_584Z-debug-0.log\n"}}
+RENDER False HyperFrames render failed: Quality check failed for authored workspace: hyperframes check exit 1. Per governance: do NOT silently fall back to Remotion or FFmpeg. Surface the failure to the user along with the hyperframes_compose step log before proposing a swap. in 2.8 s

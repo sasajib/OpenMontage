@@ -1,0 +1,1 @@
+description: Generate images (Nano Banana) and videos (Veo) through the Gemini web app using BrowserOS, with the user's Google AI Pro subscription instead of an API key.
