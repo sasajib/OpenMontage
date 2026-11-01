@@ -649,6 +649,7 @@ Tool rules:
 | `minimalist-diagram` | Technical deep-dives, architecture |
 | `anime-ghibli` | Narrative animations, nature-themed stories, emotional storytelling, fantasy visuals |
 | `ink-sketch` (Ink Theater) | Hand-drawn ink-on-white doodle animation; a character that draws itself, walks, dances; contraption explainers. **Style id, not a YAML playbook** — there is no `styles/ink-sketch.yaml`; route through `skills/creative/ink-theater.md` |
+| `animate-<style>` (Animate plugin) | Printed / hand-made looks — riso, cut paper, crosshatch, sketchbook, pixel, isometric, manim-style math — or a look matched from references; short morph-chain histories, explainers, little stories |
 
 The YAML playbooks are the files in `styles/`; `list_playbooks()` in `styles/playbook_loader.py` is the authoritative list.
 
@@ -659,6 +660,10 @@ For physical-product ads, launch films, or promos with generated shots of a spec
 ### Hand-drawn "doodle" animation → Ink Theater / Ink Puppet
 
 For any brief that wants a **hand-drawn ink doodle** look — "a sketch that comes to life", "a pencil / stick figure that walks or dances", "a little character that acts out the idea", whiteboard-doodle explainers — use the **Ink Theater** engine + **Ink Puppet** mocap system (`skills/creative/ink-theater.md`, `ink-theater/README.md`). It is a **style + reusable engine, not a new pipeline**: illustration / contraption pieces run on the `animation` pipeline; a mocap character (draws itself → walks / dances / waves via `InkPuppet.choreograph([...])`) runs on `character-animation`. Cross-tool entry points: **`/ink-art`** (create a vector doodle from scratch) and **`/animated-drawing`** (animate a *supplied* drawing with mocap — raster; `skills/creative/animated-drawing.md`). Never hand-tune character motion — the agent only chooses named mocap clips.
+
+### Printed / hand-made looks → Animate plugin
+
+For a brief that wants a **risograph, cut-paper, crosshatch-ink, sketchbook, pixel-art or isometric** look (or a look matched from the user's own references) as a short explainer, history or little story, use the **`animate`** Claude Code plugin via `skills/creative/animate-procedural.md`. Like Ink Theater it is a **style + engine on the `animation` pipeline, not a new pipeline**: OpenMontage keeps research, proposal, script, checkpoints and publish; the plugin builds and renders a deterministic single-canvas piece whose MP4 is ingested with `render_runtime: "ffmpeg"`. Narration comes from `tts_selector` as one file per script line, so the piece's timing follows the approved voice. Present it alongside Remotion and HyperFrames at proposal per the HARD RULE above.
 
 ## Layer Map
 
