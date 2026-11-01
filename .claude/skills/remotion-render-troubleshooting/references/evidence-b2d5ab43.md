@@ -1,0 +1,1 @@
+"The render failed instantly: this machine has 4 CPU cores and I set concurrency to 8. Dropping it to 4 and rerunning." and "The render script couldn't import the repo's tools package because it ran as a file outside the repo root. Rerunning with the repo on the Python path."

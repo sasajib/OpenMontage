@@ -1,0 +1,1 @@
+"Both tests passed. Your Google AI Pro account works through BrowserOS for images and video, and this is a stronger route than ChatGPT." Image saved to projects/why-the-sky-is-blue/assets/images/gemini_download/sky_texture.jpeg; video: 10 seconds, 1280x720, H.264 with an audio track, generated in about 90 seconds.

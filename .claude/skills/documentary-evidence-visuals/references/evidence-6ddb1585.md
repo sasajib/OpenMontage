@@ -1,0 +1,1 @@
+Research result: "One honest finding: the Pexels and Pixabay keys in .env are empty, so stock photos will come from Unsplash, which works." Memory note: "`.env` has EMPTY `PEXELS_API_KEY` and `PIXABAY_API_KEY` (tools show unavailable); Unsplash key works."

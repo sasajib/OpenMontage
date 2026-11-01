@@ -116,3 +116,10 @@ pytest-of-*/
 
 # GFPGAN/facexlib download face-detection weights to ./gfpgan/weights at runtime
 gfpgan/
+
+# Autoharness bookkeeping and local browser binaries
+**/.claude/autoharness/
+.claude/skills/**/.sidecar.json
+.claude/skills/**/.sidecar.json.lock
+.claude/skills/**/.ledger.jsonl
+chrome-headless-shell/

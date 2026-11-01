@@ -1,0 +1,1 @@
+The assistant wrote: "container disk 150 GB (saved as a \"template override\" because the create form reverted the disk to 15 GB)". Teardown returned: {"stillListed":false,"balance":"Balance: $18.88"}. The deploy page read back: "Total / hour\n$0.61 USD ... GPU cost\n$0.59/hour\nContainer disk cost\n$0.021/hour".
