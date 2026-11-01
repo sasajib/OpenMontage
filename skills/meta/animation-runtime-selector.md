@@ -69,6 +69,7 @@ when both were available is a CRITICAL reviewer finding.
 | BGM / SFX / image / icon resolution (any pipeline, any runtime) | n/a | `.agents/skills/media-use/SKILL.md` — `resolve` verb against project cache + global cache + HeyGen catalog |
 | Short design-led motion graphic (lower-third, stat reveal, logo sting, headline) | **hyperframes** | `.agents/skills/motion-graphics/SKILL.md` |
 | Pure concat / trim of source clips, no composition needed | **ffmpeg** | `skills/core/ffmpeg.md` |
+| Riso / cut-paper / crosshatch / sketchbook / pixel / isometric look, or a look matched from references, as a short morph-chain story | **ffmpeg** (the `animate` plugin renders its own MP4; OpenMontage ingests it) | `skills/creative/animate-procedural.md` |
 | Selected runtime is unavailable | **escalate** — do not substitute silently | `AGENT_GUIDE.md` → Escalate Blockers |
 
 Read `skills/core/hyperframes.md` for the full Remotion-vs-HyperFrames
