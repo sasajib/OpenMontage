@@ -15,6 +15,7 @@ The script is the backbone of the video. Every visual, every scene, every audio 
 | Prior artifact | `research_brief` (optional but high-value) | Data points, audience insights, expert quotes — ground the script in real facts |
 | Playbook | Active style playbook from `proposal_packet.selected_concept.suggested_playbook` | Voice style, pacing rules |
 | Meta skill | `skills/meta/voice-performance-director.md` | Structured TTS delivery cues for natural, expressive narration |
+| Creative skill | `skills/creative/hook-and-retention.md` | **Binding gate:** five scored hook variants, retention map, open loops, line lint |
 | Layer 3 | TTS provider skills (check `agent_skills` on the selected TTS tool) | TTS capabilities for speaker directions |
 
 ## Process
@@ -203,6 +204,8 @@ Score your script (1-5):
 | **CTA relevance** | Is the call to action specific and actionable? |
 
 If any dimension scores below 3, revise before submitting.
+
+Then run the hook-and-retention script gate (`skills/creative/hook-and-retention.md` Step 7). It is binding: five hooks scored with the pick at ≥ 8/10 and logged, `promise` and `retention_map` in metadata, line lint clean.
 
 ### Step 7: Submit
 

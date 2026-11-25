@@ -1,0 +1,1 @@
+sed -i 's/scr = lp(scr, 9000, 2) \* 0.11/scr = lp(scr, 9000, 2) * 0.045   # pen quieter by about 8 dB (user note 2026-11-03)/' mix.py ... (user message) we should reduce the volume of the dwaring ish... sound

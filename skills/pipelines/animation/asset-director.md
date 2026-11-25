@@ -94,6 +94,50 @@ When `animation_mode == "image_animation"`, each scene needs **2-3 images** for 
    ```
    **If you skip this step, the render will fail with missing file errors.** This is the #1 cause of render failures for new projects.
 
+### 1d. Generated-Visual QA Gate (Binding)
+
+Nothing downstream inspects picture quality. HyperFrames `check` reads the
+composition code, and `final_review` only tests that frames exist, are not
+black, and have readable text. A deformed face passes both. The only place a
+bad generated image gets caught is here, before it costs more money.
+
+Rule: **no generated still or clip may feed a video job (image-to-video,
+lip-sync, upscale) or be registered in `asset_manifest` until it has been
+viewed at full resolution.** A downscaled contact sheet does not count; a
+0.8 s eye shot with the door plank drawn across the face passed a contact-sheet
+review once and shipped.
+
+Procedure:
+
+1. Run `python tools/analysis/asset_review_frames.py <project_dir>` (after the
+   manifest exists) or open the files directly. It lists every still and the
+   first / middle / last frame of every clip. Open each one with the image
+   viewer at full size.
+2. Score each asset and record it as `quality_score` (0-1) in the manifest.
+   Anything under 0.7 is regenerated, not patched in the edit.
+3. Reject on any of these, regardless of score:
+   - face partly hidden, cropped, or with an object drawn across it (planks,
+     poles, hands over eyes). Edit models muddle occlusion over faces.
+   - eyes mismatched in size, doubled, or merged with a background edge.
+   - character touching the frame edge or cut off at the torso in a shot that
+     carries dialogue. Peeking-from-behind poses read as "hanging off the door".
+   - extra or missing limbs, melted hands, text or watermarks.
+   - for lip-sync source frames: anything that is not frontal, centred,
+     chest-up, with the whole mouth visible. The lip-sync model keeps the pose
+     it is given and warps side-on faces.
+   - **reality-check failures** (HARD, user rule 2026-11-07): gear that does not
+     work the way the real thing does (rope beside the carabiner, screw threads
+     out of the ice, axe held by the head), props the character could not have
+     (a flagpole on a summit), surfaces that ignore the conditions (a dry suit
+     at -30 C), extra people, wrong shot size or angle, limbs cut by the frame.
+     Trace every rope/strap/tool end to end. Mechanism shots: two takes, then
+     redesign the shot to show the force, not the hardware. Full checklist in
+     `.claude/skills/generated-visual-anatomy-qa/SKILL.md` section B.
+4. Generate 2-3 candidates for any character still (about $0.02 each on the
+   own RunPod endpoints) and keep the best one; do not accept the first result.
+5. Record in the checkpoint summary how many assets were viewed, how many were
+   regenerated and why. The reviewer blocks the gate if this is missing.
+
 ### 2. Build Reusable Systems
 
 Create once:

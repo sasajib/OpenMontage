@@ -650,6 +650,7 @@ Tool rules:
 | `anime-ghibli` | Narrative animations, nature-themed stories, emotional storytelling, fantasy visuals |
 | `ink-sketch` (Ink Theater) | Hand-drawn ink-on-white doodle animation; a character that draws itself, walks, dances; contraption explainers. **Style id, not a YAML playbook** — there is no `styles/ink-sketch.yaml`; route through `skills/creative/ink-theater.md` |
 | `animate-<style>` (Animate plugin) | Printed / hand-made looks — riso, cut paper, crosshatch, sketchbook, pixel, isometric, manim-style math — or a look matched from references; short morph-chain histories, explainers, little stories |
+| `opuscar-<slug>` (Lemo-Opuscar plugin) | 66 code-rendered film styles — painting, printmaking, East Asian traditions, era cinema, cartoon, games, 3D, keynote/dataviz, and evidence/documentary films cut from real material (satellite, archive, scans, CAD) |
 
 The YAML playbooks are the files in `styles/`; `list_playbooks()` in `styles/playbook_loader.py` is the authoritative list.
 
@@ -664,6 +665,10 @@ For any brief that wants a **hand-drawn ink doodle** look — "a sketch that com
 ### Printed / hand-made looks → Animate plugin
 
 For a brief that wants a **risograph, cut-paper, crosshatch-ink, sketchbook, pixel-art or isometric** look (or a look matched from the user's own references) as a short explainer, history or little story, use the **`animate`** Claude Code plugin via `skills/creative/animate-procedural.md`. Like Ink Theater it is a **style + engine on the `animation` pipeline, not a new pipeline**: OpenMontage keeps research, proposal, script, checkpoints and publish; the plugin builds and renders a deterministic single-canvas piece whose MP4 is ingested with `render_runtime: "ffmpeg"`. Narration comes from `tts_selector` as one file per script line, so the piece's timing follows the approved voice. Present it alongside Remotion and HyperFrames at proposal per the HARD RULE above.
+
+### Named film styles → Lemo-Opuscar plugin
+
+For a brief that names a **film look** — watercolor, ink wash, ukiyo-e, 1920s newsreel, Swiss motion, blueprint, hologram HUD, pixel RPG, satellite briefing, visual investigation and 60 more — or an explainer built from **real material** (satellite imagery, archive footage, scans, CAD, point clouds), use the **`lemo-opuscar`** Claude Code plugin via `skills/creative/opuscar-film.md`. Same shape as the animate plugin: a **style + engine on the `animation` pipeline, not a new pipeline**. OpenMontage keeps research, proposal, script, checkpoints and publish; the plugin directs a treatment, renders a deterministic code page frame by frame, scores and masters it, and the MP4 is ingested with `render_runtime: "ffmpeg"`. Narration comes from `tts_selector` as one WAV per script line. Its library lives outside the repo at `~/lemo-opuscar`. Present it alongside Remotion and HyperFrames at proposal per the HARD RULE above, and say that a film costs 30–60 min of agent time.
 
 ## Layer Map
 
@@ -702,6 +707,9 @@ The `.agents/skills/` directory is large. When you're not coming in through a to
 | **Image generation** | `bfl-api`, `flux-best-practices` |
 | **Own RunPod endpoints (image + video, cheapest path)** | `.claude/skills/runpod-vllm-omni-endpoints` — WAN 2.2 image-to-video, Qwen-Image-2512, Qwen-Image-Edit-2511, Z-Image-Turbo; endpoint ids, release/park rule, request bodies, costs. Read before any RunPod generation or `RUNPOD_*` change |
 | **Video generation** | `seedance-2-0` (preferred premium default — cinematic, trailer, multi-shot, synced audio, lip-sync), `gemini-omni` (conversational video editing, reference tags, timecoded beats), `ai-video-gen`, `ltx2` |
+| **Reality check (generated stills, clips, renders)** | `video-reality-check` — the `reality_check` tool (pose/hands, face-identity drift vs the character sheet, wardrobe continuity, camera motion, VLM/agent checklist) and the `audio_check` tool (round-trip WER, truncation, pace/prosody vs the cue, music plan, LUFS/true peak, ducking) and when to run it: still -> clip -> render, cheapest point first. Rules in `generated-visual-anatomy-qa` |
+| **Camera direction (generated image + video)** | `camera-movement-prompts` — 46 copy-ready camera move prompts (pan, zoom, dolly, orbit, tracking, crane, drone…) plus shot sizes and camera angles with example prompts; choose size, angle and move with `skills/creative/camera-direction.md` |
+| **Camera for code-rendered scenes** | `hyperframes-animation` camera rules (`viewport-change`, `multi-phase-camera`, `coordinate-target-zoom`, `depth-of-field-blur`, `motion-blur-streak`); direct them with `skills/creative/virtual-camera.md` — depth planes, one camera line per scene, speed numbers, easing, strip check |
 | **Audio** | `elevenlabs`, `music`, `sound-effects`, `acestep`, `text-to-speech`, `azure-text-to-speech` (optional cloud TTS — tool `azure_tts`, same Speech key as `azure_stt`), `setup-api-key` |
 | **Speech-to-text** | `speech-to-text` (whisper `transcriber` — default, offline), `azure-speech-to-text` (optional cloud STT — tool `azure_stt`, preferred when `AZURE_SPEECH_KEY` is set) |
 | **Avatar / lip-sync** | `avatar-video`, `heygen`, `create-video`, `faceswap`, `video-translate`, `agents` |
@@ -729,6 +737,7 @@ The `.agents/skills/` directory is large. When you're not coming in through a to
 - **Do not bypass the pipeline.** Never write ad-hoc scripts to call tools directly. All production goes through pipeline stages with director skills. See Rule Zero.
 - **Do not call generation tools without reading their Layer 3 skill.** Check the tool's `agent_skills` field, read the referenced skill, then craft your prompts using that guidance.
 - **Do not skip stage director skills.** Before executing any pipeline stage, read its director skill. The skill contains the quality bar, the workflow, and the review criteria.
+- **Do not submit a script without the hook-and-retention gate.** `skills/creative/hook-and-retention.md` is binding in every pipeline that writes a script or beat map: five scored hooks, a retention map, a line lint, and measured checks on the render.
 - Do not use deleted legacy names such as `tts_cloud`, `tts_engine`, or `video_gen`.
 - Do not hardcode provider names, API key names, or setup URLs. Read them from the registry's `install_instructions` and `dependencies` fields.
 - Do not tell a restricted shared-installation user to add credentials manually, create a `.env`, or export a key. Surface the unavailable provider as an administrator setup request and continue only with centrally provisioned capabilities.

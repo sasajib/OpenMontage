@@ -158,7 +158,7 @@ Math/Diagram: {configured}/{total}
 
 **Present this scan to the user.** Say: "Here's what I can see right now. Based on this, here are your animation approach options."
 
-The approach options MUST name the visual systems available, not just runtimes: the style playbooks in `AGENT_GUIDE.md` → Style Playbooks (including Ink Theater and, when the `animate` plugin is installed, its looks — riso, cut paper, crosshatch, sketchbook, pixel, isometric, math; see `skills/creative/animate-procedural.md`). Recommend one and wait for the user's pick. Never auto-select a look the user did not name or approve.
+The approach options MUST name the visual systems available, not just runtimes: the style playbooks in `AGENT_GUIDE.md` → Style Playbooks (including Ink Theater and, when the `animate` plugin is installed, its looks — riso, cut paper, crosshatch, sketchbook, pixel, isometric, math; see `skills/creative/animate-procedural.md`; and, when the `lemo-opuscar` plugin is installed, its 66 film styles — see `skills/creative/opuscar-film.md`). Recommend one and wait for the user's pick. Never auto-select a look the user did not name or approve.
 
 #### Step 3b: Animation Approach Decision Matrix
 

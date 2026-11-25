@@ -1,0 +1,1 @@
+music: False Music generation failed: 402 Client Error: Payment Required for url: https://api.elevenlabs.io/v1/music {'output_path': None, 'duration_seconds': None, 'cost_usd': None}

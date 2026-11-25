@@ -1,0 +1,4 @@
+The sans-serif fallback variant renders Anton correctly, so HyperFrames needs a generic fallback on each custom family. Applying that in the builder and checking the regeneration batch.
+Bash: sed -i 's/font-family:"Anton";/font-family:"Anton",sans-serif;/g; s/font-family:"Typewriter";/font-family:"Typewriter",monospace;/g; s/font-family:"Inter";/font-family:"Inter",sans-serif;/g' projects/great-emu-war/scripts/build_hyperframes.py && grep -c '"Anton",sans-serif' ... && PYTHONPATH=. .venv/bin/python projects/great-emu-war/scripts/build_hyperframes.py | head -1
+Result: 10 / index.html 38515 chars; 113 tweens; 46 captions; TOTAL 91.64
+Assistant: HyperFrames check passes with zero errors, typography verified after fixing the font fallback and two overlapping cards.

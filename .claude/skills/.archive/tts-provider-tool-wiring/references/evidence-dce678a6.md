@@ -1,0 +1,1 @@
+tts-provider-tool-wiring [project]: Use when adding a TTS provider tool to OpenMontage.

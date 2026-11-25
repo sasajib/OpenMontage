@@ -134,9 +134,9 @@ Structure your review as:
 | research | Source diversity, claim verifiability, visual reference quality |
 | proposal | Delivery promise clarity, renderer family AND render runtime selection, music/voice plan, decision log started |
 | idea | Hook uniqueness, research depth, angle diversity |
-| script | Timing accuracy, narrative arc, enhancement cue density |
-| scene_plan | Full coverage, visual variety, asset feasibility, slideshow risk score |
-| assets | File existence, style consistency, budget adherence |
+| script | Timing accuracy, narrative arc, enhancement cue density, **Hook and Retention gate** (see below) |
+| scene_plan | Full coverage, visual variety, asset feasibility, slideshow risk score, a camera line per scene |
+| assets | File existence, style consistency, budget adherence, Generated-Visual QA Gate evidence (every image/video asset has quality_score >= 0.7; summary states assets viewed at full res and regenerated count) — missing evidence is **CRITICAL**. **Reality-Check Gate** (HARD): summary must show every still was traced for gear geometry / prop provenance / environment / cast count / framing before any image-to-video job, and every clip reviewed at >= 1 fps for anatomy, continuity and camera, with viewed / failed / regenerated / redesigned counts — missing evidence or an untraced mechanism shot is **CRITICAL** and blocks the gate |
 | edit | Timeline coverage, audio sync, subtitle presence, delivery promise compliance |
 | compose | Playability, duration accuracy, audio quality, pre-compose validation pass |
 | publish | SEO quality, metadata completeness, export packaging |
@@ -173,6 +173,28 @@ Run at **every stage** when a VideoAnalysisBrief exists (reference-driven produc
 - Weak differentiation (surface-level changes only): **SUGGESTION**
 - User preference not honored: **SUGGESTION**
 - Cost drift >30%: **CRITICAL**
+
+## Hook and Retention Review
+
+Run at **script**, **scene_plan** and **compose**. The rules and numbers live in `skills/creative/hook-and-retention.md`; camera rules in `skills/creative/virtual-camera.md` and `skills/creative/camera-direction.md`.
+
+### At script stage:
+- Fewer than five scored hook variants, or no `concept_selection` entry with `subject: "Hook"` in `decision_log`: **CRITICAL**
+- Chosen hook scores below 8/10, or the payoff does not answer the `promise`: **CRITICAL**
+- `retention_map` missing a beat (hook, promise, second hook / re-hook, hero moment, payoff, ending type): **CRITICAL**
+- An open loop that never closes, or no loop open before the payoff: **SUGGESTION**
+- Line-lint failures (over 22 words, no picture change, banned phrase, on-screen echo): **SUGGESTION**, **CRITICAL** when more than a fifth of the lines fail
+
+### At scene_plan stage:
+- A scene with no camera line, or three consecutive scenes with the same move and size: **SUGGESTION**
+- A planned stretch longer than the pacing limit with no visual change: **CRITICAL** for shorts, **SUGGESTION** for long-form
+- Generated shots in one location with no stated subject position and facing: **SUGGESTION**
+- Fewer than half of the scene boundaries name a carried element (hard-cut bursts and declared cuts exempt): **CRITICAL**; under 7 in 10: **SUGGESTION**
+- Evenly spaced shot lengths (longest under 4× the shortest), or no quiet beat before the hero moment: **SUGGESTION**
+- A frozen frame of live footage planned as the pause (or a `frozen_frame` finding from `retention_check` at compose): **CRITICAL**
+
+### At compose stage:
+The review must show the `retention_check` render report and the **measured** numbers from Step 7 of the skill (voice start, motion by 0.3 s, longest still stretch, hits on words, dead air) and the timestamped cold-watch answers. Missing measurements: **CRITICAL**. First word later than 0.5 s, an empty frame 0, or a still stretch over the limit: **CRITICAL**.
 
 ## Slideshow Risk Review
 
@@ -305,7 +327,7 @@ Run at **compose** and **publish** stages. Ensures the agent reviewed the actual
    - `fail` → The pipeline MUST NOT proceed. If it did: **CRITICAL**
 3. **Check completeness**: All 5 required checks must have data:
    - `technical_probe` must show a valid container with plausible duration/resolution
-   - `visual_spotcheck` must have `frames_sampled >= 4`
+   - `visual_spotcheck` must have `frames_sampled >= 4` AND `frames_sampled >= number of cuts in the edit` (video_compose samples one frame per detected cut); the agent's per-scene notes must reference those frames, not a contact sheet
    - `audio_spotcheck` must report narration/music presence
    - `promise_preservation` must confirm `delivery_promise_honored`
    - `subtitle_check` must report presence/absence

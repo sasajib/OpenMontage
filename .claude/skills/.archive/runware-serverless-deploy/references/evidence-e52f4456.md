@@ -1,0 +1,1 @@
+"`403` means **the credentials are good and the block is on the organization**: it has no Serverless access, or the access it had was revoked. **It does not clear on its own.**" — and the serverless probe that returned 401 was treated as the access gate in the same episode.

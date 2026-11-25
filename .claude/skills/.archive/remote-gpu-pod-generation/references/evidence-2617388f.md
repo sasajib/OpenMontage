@@ -1,0 +1,1 @@
+remote-gpu-pod-generation [project]: Use when renting a RunPod GPU pod for open-source models.

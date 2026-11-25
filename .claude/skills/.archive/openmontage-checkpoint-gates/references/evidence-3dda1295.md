@@ -1,0 +1,1 @@
+PREREQUISITE VIOLATION: stage 'proposal' cannot advance; incomplete or missing: ['research']. Pipeline order: ['research', 'proposal', 'script', 'scene_plan', 'assets', 'edit', 'compose', 'publish'].

@@ -1,0 +1,1 @@
+Gotchas: readcheck wants titles on screen ≥ chars/15+1.5 s (DUR extended to 64); the camera soft-clamp follows the nib even after the line ends

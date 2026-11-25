@@ -10,6 +10,7 @@ This stage builds the beat map, selected lines, title-card copy, and reveal stru
 |-------|----------|---------|
 | Schema | `schemas/artifacts/script.schema.json` | Artifact validation |
 | Prior artifact | `state.artifacts["proposal"]["proposal_packet"]` | Emotional arc and source truth |
+| Creative skill | `skills/creative/hook-and-retention.md` | **Binding gate:** five scored hook variants, retention map, open loops, line lint |
 | Tools | `transcriber`, `scene_detect` | Optional dialogue mining and source review |
 
 ## Process
@@ -57,6 +58,7 @@ Recommended metadata keys:
 
 ### 5. Quality Gate
 
+- the hook-and-retention script gate passes (`skills/creative/hook-and-retention.md` Step 7): five hooks scored, pick ≥ 8/10 logged, `promise` and `retention_map` in metadata, line lint clean,
 - the beat map escalates cleanly,
 - dialogue and title cards do not explain the same thing twice,
 - the reveal lands distinctly,

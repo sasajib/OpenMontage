@@ -1,0 +1,1 @@
+the new version of everest-summit, cause previous version was very bad, 3 hands, no eye blink - totally a non sense video. the naration was also bad.

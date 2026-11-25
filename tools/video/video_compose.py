@@ -2367,6 +2367,26 @@ class VideoCompose(BaseTool):
 
         return result
 
+    @staticmethod
+    def _detect_cuts(video_path: Path, threshold: float = 0.3, min_gap: float = 0.4) -> list[float]:
+        """Timestamps of hard cuts via ffprobe's scene filter; [] on any failure."""
+        escaped = str(video_path).replace("\\", "/").replace(":", "\\:").replace("'", "\\'")
+        cmd = [
+            "ffprobe", "-v", "quiet", "-show_entries", "frame=pts_time", "-of", "json",
+            "-f", "lavfi", f"movie='{escaped}',select='gt(scene,{threshold})'",
+        ]
+        try:
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+            frames = json.loads(proc.stdout or "{}").get("frames", [])
+        except Exception:
+            return []
+        cuts: list[float] = []
+        for fr in frames:
+            ts = float(fr.get("pts_time", 0))
+            if not cuts or ts - cuts[-1] >= min_gap:
+                cuts.append(ts)
+        return cuts
+
     def _run_final_review(
         self,
         output_path: Path,
@@ -2486,12 +2506,19 @@ class VideoCompose(BaseTool):
             try:
                 frame_dir = output_path.parent / ".final_review_frames"
                 frame_dir.mkdir(parents=True, exist_ok=True)
-                # Sample at 10%, 35%, 65%, 90% of duration
-                sample_points = [0.10, 0.35, 0.65, 0.90]
+                # Sample at 10%, 35%, 65%, 90% of duration, plus one frame
+                # shortly after every detected cut so short shots are never
+                # skipped (a 0.8 s shot with a broken face passed a 4-frame
+                # review once; see skills/pipelines/animation/asset-director.md).
+                sample_ts = [round(duration * pct, 2) for pct in (0.10, 0.35, 0.65, 0.90)]
+                for cut in self._detect_cuts(output_path):
+                    ts = round(min(cut + 0.25, duration - 0.05), 2)
+                    if all(abs(ts - t) > 0.3 for t in sample_ts):
+                        sample_ts.append(ts)
+                sample_ts = sorted(sample_ts)[:60]
                 frame_paths = []
-                for i, pct in enumerate(sample_points):
-                    ts = round(duration * pct, 2)
-                    frame_path = frame_dir / f"review_frame_{i}.png"
+                for i, ts in enumerate(sample_ts):
+                    frame_path = frame_dir / f"review_frame_{i:02d}_{ts:06.2f}s.png"
                     cmd = [
                         "ffmpeg", "-y", "-ss", str(ts),
                         "-i", str(output_path),

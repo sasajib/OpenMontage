@@ -264,7 +264,21 @@ class TTSSelector(BaseTool):
                 raise ValueError("model and model_id disagree")
             adapted["model_id"] = inputs["model"]
             adapted.pop("model", None)
-        if tool.name not in {"azure_tts", "mai_tts"}:
+        if tool.name == "kokoro_tts":
+            if inputs.get("voice_id") and not inputs.get("voice"):
+                adapted["voice"] = inputs["voice_id"]
+            speed = inputs.get("speaking_rate", inputs.get("speed"))
+            if speed is not None:
+                adapted["speed"] = float(speed)
+            if not isinstance(inputs.get("style"), str):
+                adapted.pop("style", None)
+            output_format = str(inputs.get("output_format", ""))
+            if output_format.startswith("mp3"):
+                adapted["output_format"] = "mp3"
+            elif output_format.startswith(("wav", "riff", "pcm")):
+                adapted["output_format"] = "wav"
+            return adapted
+        if tool.name not in {"azure_tts", "mai_tts", "edge_tts"}:
             return adapted
 
         if inputs.get("voice_id") and not inputs.get("voice"):
@@ -277,7 +291,11 @@ class TTSSelector(BaseTool):
 
         pitch = inputs.get("pitch")
         if isinstance(pitch, (int, float)):
-            adapted["pitch"] = f"{pitch:+g}st" if pitch else "0%"
+            # Edge takes Hz, not semitones; drop the numeric control there.
+            if tool.name == "edge_tts":
+                adapted.pop("pitch", None)
+            else:
+                adapted["pitch"] = f"{pitch:+g}st" if pitch else "0%"
 
         # The selector's numeric style is ElevenLabs-specific. Azure's style
         # is a named express-as value such as "calm" or "newscast".

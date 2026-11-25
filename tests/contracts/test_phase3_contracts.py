@@ -705,6 +705,8 @@ class TestCapabilityMetadata:
             if item["provider"] != "selector"
         }
         assert providers == {
+            "edge",
+            "kokoro",
             "grok",
             "heygen",
             "mistral",

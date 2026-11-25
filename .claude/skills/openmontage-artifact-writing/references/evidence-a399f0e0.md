@@ -1,0 +1,1 @@
+openmontage-artifact-writing [project]: Use when writing OpenMontage asset_manifest or edit JSON.

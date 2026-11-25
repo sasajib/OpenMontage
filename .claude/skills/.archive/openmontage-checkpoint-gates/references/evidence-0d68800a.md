@@ -1,0 +1,1 @@
+publish ERR '0:00 The loop' is not of type 'object' ['entries', 0, 'metadata_used', 'chapters', 0] ... lib.checkpoint.CheckpointValidationError: Artifact 'publish_log' failed schema validation: '0:59 Quiet the Loop' is not of type 'object'

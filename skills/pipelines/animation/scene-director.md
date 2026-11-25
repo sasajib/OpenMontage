@@ -11,6 +11,8 @@ You are converting the script into a feasible animation plan. This is the stage 
 | Schema | `schemas/artifacts/scene_plan.schema.json` | Artifact validation |
 | Prior artifacts | `state.artifacts["script"]["script"]`, `state.artifacts["proposal"]["proposal_packet"]` | Beat map and tool path |
 | Playbook | Active style playbook | Palette, typography, motion consistency |
+| Creative skill | `skills/creative/virtual-camera.md` (code-rendered scenes), `skills/creative/camera-direction.md` (generated stills and clips) | One camera line per scene; coverage, screen direction and continuity for generated shots |
+| Creative skill | `skills/creative/hook-and-retention.md` Step 5 | Pacing numbers: longest stretch without a visual change, hits on the spoken word |
 
 ## Process
 
@@ -99,6 +101,7 @@ Recommended metadata keys:
 ### 6. Quality Gate
 
 - every scene has a clear timing intent,
+- every scene has a camera line (move, seconds, speed, target — reason), consecutive scenes differ in move, size or direction, and no stretch exceeds the hook-and-retention pacing limit without a visual change,
 - the 5-aspect checklist is satisfied for the scene's `animation_mode` (with explicit N/A where appropriate),
 - overlays live under `overlays:`, never inside the framing description,
 - the transition system is limited and meaningful,

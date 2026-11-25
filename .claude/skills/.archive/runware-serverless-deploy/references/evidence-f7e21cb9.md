@@ -1,0 +1,1 @@
+"`403` means **the credentials are good and the block is on the organization**: it has no Serverless access, or the access it had was revoked." and "`402` with the `insufficient-credit` type means **your organization's credit balance cannot back the GPU capacity the request would start**."

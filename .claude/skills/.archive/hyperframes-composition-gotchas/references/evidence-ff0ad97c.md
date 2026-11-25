@@ -1,0 +1,1 @@
+Assistant edit: `if sid == "sc01": a = C["sc02"][0] - 0.8  # readout appears after the opening card` and `if sid == "sc07":  # hide behind the death-zone card and the blackout` with `tl.to("#alt{i}", {opacity:0, duration:0.2}, C["sc08"][0]-0.2)`; assistant note: "The composition frames look good, but the readout overlaps the opening and death-zone cards, so I'm fixing those."

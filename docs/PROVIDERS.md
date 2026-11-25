@@ -1322,6 +1322,49 @@ HyperFrames workspaces live under `projects/<project-name>/hyperframes/`. Final 
 
 ---
 
+### Kokoro TTS — Self-Hosted Natural Voices
+
+> **Free, self-hosted, CPU-friendly.** [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI) wraps the Apache-2.0 Kokoro-82M model behind an OpenAI-compatible speech API. 67 natural voices (US/UK English, Spanish, French, Hindi, Italian, Japanese, Portuguese, Chinese), voice blending, and word timestamps. No voice cloning.
+
+**Tool:** `kokoro_tts`
+**Runtime:** API (your own server), CPU is enough
+**Env var:** `KOKORO_TTS_URL` (optional `KOKORO_TTS_API_KEY`)
+
+#### Setup
+
+```bash
+docker run -d --name kokoro-tts --restart unless-stopped \
+  -p 127.0.0.1:8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.4
+export KOKORO_TTS_URL=http://127.0.0.1:8880
+```
+
+**Controls:** `voice` (id such as `af_heart`, `am_adam`; blend such as `af_bella(2)+af_sky(1)`; or alias heart/bella/sarah/adam/michael/emma/george), `speed` (0.25–4.0), `lang_code`, `word_timestamps` (writes `<output>.words.json`), `output_format` mp3 or wav (24 kHz).
+
+**Quality:** Natural, consistent, roughly 2x real time on an 8-thread CPU. Best free option for stock narration; use ElevenLabs or fish.audio when you need a cloned voice.
+
+---
+
+### Edge TTS — Free Keyless Neural Voices
+
+> **Free, no API key.** Uses the `edge-tts` package to reach Microsoft Edge's Read Aloud voices (the same neural voices as Azure AI Speech). Network required. Unofficial client: Microsoft occasionally changes the endpoint and the package needs `pip install -U edge-tts` to catch up, so treat it as a draft/personal-project provider rather than a client-deliverable one.
+
+**Tool:** `edge_tts`
+**Runtime:** API (network), CPU only
+**Env var:** None
+
+#### Setup
+
+```bash
+pip install edge-tts
+edge-tts --list-voices        # 300+ voices across ~75 languages
+```
+
+**Controls:** `voice` (short name or alias andrew/brian/ava/emma/guy/jenny), `rate` (`+10%`), `pitch` (`-20Hz`), `volume`, `word_timestamps` (writes `<output>.words.json` with per-word start/end seconds), `output_format` mp3 (native 24 kHz) or wav (via ffmpeg).
+
+**Quality:** Same voices as Azure neural TTS. No SSML or express-as styles.
+
+---
+
 ### Piper TTS — Offline Text-to-Speech
 
 > **Completely free, fully offline TTS.** No network required. Good quality for drafts and budget-constrained projects.
@@ -1560,6 +1603,8 @@ These tools require only FFmpeg or Python packages — no GPU, no API key.
 | **Pexels** | `PEXELS_API_KEY` | `pexels_image`, `pexels_video` | Free |
 | **Pixabay** | `PIXABAY_API_KEY` | `pixabay_image`, `pixabay_video` | Free |
 | **Piper** | — (install only) | `piper_tts` | Free |
+| **Edge TTS** | — (install only) | `edge_tts` | Free |
+| **Kokoro (self-hosted)** | `KOKORO_TTS_URL` | `kokoro_tts` | Free |
 | **Azure AI Speech** | `AZURE_SPEECH_KEY` + `AZURE_SPEECH_REGION` | `azure_stt`, `azure_tts` | Free tier + paid |
 | **Google** | `GOOGLE_API_KEY` (or `GEMINI_API_KEY`) | `google_tts`, `google_imagen`, `google_music`, `gemini_omni_video`, `veo_video` | Free tier (TTS) + paid |
 | **ElevenLabs** | `ELEVENLABS_API_KEY` | `elevenlabs_tts`, `music_gen` | Free tier + paid |

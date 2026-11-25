@@ -12,6 +12,7 @@ This stage turns the approved proposal into animation-ready beats. The script mu
 | Prior artifact | `proposal_packet` from Proposal Director | Selected concept, animation mode, target duration, reuse strategy |
 | Optional artifact | `research_brief` from Research Director | Data points, audience insights, accuracy constraints |
 | Meta skill | `skills/meta/voice-performance-director.md` | Structured TTS delivery cues for natural, expressive narration |
+| Creative skill | `skills/creative/hook-and-retention.md` | **Binding gate:** five scored hook variants, retention map, open loops, line lint |
 | Tools | `transcriber` | Optional source transcript support |
 
 ## Process
@@ -105,6 +106,7 @@ If a `research_brief` is available:
 
 Before submitting the script, verify:
 
+- [ ] Hook-and-retention script gate passes (`skills/creative/hook-and-retention.md` Step 7): five hooks scored, pick ≥ 8/10 logged, `promise` and `retention_map` in metadata, line lint clean
 - [ ] Every section supports ONE strong visual idea
 - [ ] On-screen text is concise (phrases, not paragraphs)
 - [ ] Timing is animation-friendly (holds budgeted)

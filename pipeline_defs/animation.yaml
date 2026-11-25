@@ -131,11 +131,13 @@ stages:
     optional_tools:
       - transcriber
     tools_available:
+      - retention_check
       - transcriber
     checkpoint_required: true
     human_approval_default: true
     review_focus:
       - Script beats are concise and animation-friendly
+      - "Hook-and-retention gate (skills/creative/hook-and-retention.md): five scored hook variants with the pick logged, promise and retention_map in script metadata, line lint clean"
       - On-screen text remains readable and restrained
       - Timing structure leaves room for visual holds
       - Narration-led scripts include concrete voice performance cues
@@ -159,6 +161,7 @@ stages:
     human_approval_default: true
     review_focus:
       - Scene system is coherent and follows reuse strategy from proposal
+      - "Every scene has a camera line (virtual-camera.md for code-rendered, camera-direction.md for generated shots) and no stretch exceeds the pacing limit without a visual change"
       - Animation mode specified per scene, consistent with proposal
       - Transition logic is limited and meaningful
       - Every scene has a feasible tool path
@@ -215,9 +218,11 @@ stages:
       - "Clip duration maximized (prefer 10s over 5s) to reduce API calls and cost"
       - "Use selector tools (video_selector, tts_selector, image_selector) — never call provider tools directly"
       - "Read Layer 2 skills for each tool BEFORE reading source code — skills contain usage guidance, source code is implementation detail"
+      - "Generated-Visual QA Gate (asset-director 1d): every generated still and the first/middle/last frame of every clip viewed at FULL resolution before any image-to-video or lip-sync job and before this checkpoint; faces unoccluded, eyes well formed, dialogue shots frontal and centred"
     success_criteria:
       - Schema-valid asset_manifest artifact
       - All referenced asset files exist on disk
+      - Every generated image/video asset carries a quality_score >= 0.7 and the checkpoint summary states how many were viewed and regenerated
       - layer3_skills_read list is present and includes all tools used for generation
       - Real 3D-world briefs include semantic or wireframe diagnostic review before compose
 
@@ -258,6 +263,7 @@ stages:
     optional_tools:
       - video_stitch
     tools_available:
+      - retention_check
       - video_compose
       - hyperframes_compose
       - audio_mixer
@@ -266,12 +272,13 @@ stages:
     human_approval_default: false
     review_focus:
       - Text and diagrams remain sharp at final resolution
+      - "Hook-and-retention measurements on the render are recorded: first word by 0.5 s, motion by 0.3 s, longest still stretch, hits on words, cold-watch answers"
       - Motion timing survives the final render
       - Audio sync matches the animatic intent
       - Duration within +/-5% of target
       - "render_runtime in edit_decisions matches render_runtime locked in proposal_packet — any swap requires a render_runtime_selection decision in decision_log"
       - "HyperFrames renders MUST pass `hyperframes lint` and `hyperframes validate` before the render step — never skip validation"
-      - "Post-render self-review MANDATORY: extract keyframes, visually inspect each scene, flag weak frames before presenting to user"
+      - "Post-render self-review MANDATORY: open EVERY frame in final_review.visual_spotcheck.frame_paths (one per detected cut plus four fixed points), flag weak frames before presenting to user — a 4-frame sample misses short shots"
     success_criteria:
       - Schema-valid render_report artifact
       - Output file exists and passes ffprobe validation

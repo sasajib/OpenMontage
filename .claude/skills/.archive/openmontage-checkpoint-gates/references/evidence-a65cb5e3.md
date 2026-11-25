@@ -1,0 +1,1 @@
+jsonschema.exceptions.ValidationError: Additional properties are not allowed ('audio_direction', 'motion_commitment', 'visual_references' were unexpected) Failed validating 'additionalProperties' in schema['properties']['angles_discovered']['items']: 'required': ['name', 'hook', 'type', 'why_now']

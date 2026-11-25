@@ -1,0 +1,1 @@
+hf-space-tts-demo-quota [project]: Use when a Hugging Face Space TTS demo hits ZeroGPU quota.

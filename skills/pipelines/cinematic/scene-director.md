@@ -12,6 +12,8 @@ You are deciding how each cinematic beat will look and transition. This is where
 | Prior artifacts | `state.artifacts["script"]["script"]`, `state.artifacts["proposal"]["proposal_packet"]` | Beat map and source truth |
 | Tools | `frame_sampler`, `scene_detect` | Source inspection and reframing checks |
 | Playbook | Active style playbook | Color and typography consistency |
+| Creative skill | `skills/creative/virtual-camera.md` (code-rendered scenes), `skills/creative/camera-direction.md` (generated stills and clips) | One camera line per scene; coverage, screen direction and continuity for generated shots |
+| Creative skill | `skills/creative/hook-and-retention.md` Step 5 | Pacing numbers: longest stretch without a visual change, hits on the spoken word |
 
 ## Process
 
@@ -66,6 +68,8 @@ Recommended metadata keys:
 ### 6. Quality Gate
 
 - every beat has a scene treatment,
+- every scene has a camera line (move, seconds, speed, target — reason); generated shots in one location share listed camera setups and one side of the line, with subject position and facing written per shot (`camera-direction.md` Step 5b),
+- no stretch exceeds the hook-and-retention pacing limit without a visual change,
 - hero frames are identifiable AND fully specified across all 5 aspects,
 - support inserts are justified,
 - overlays are recorded under `overlays:`, never inside the depth/framing description,

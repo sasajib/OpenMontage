@@ -70,6 +70,7 @@ when both were available is a CRITICAL reviewer finding.
 | Short design-led motion graphic (lower-third, stat reveal, logo sting, headline) | **hyperframes** | `.agents/skills/motion-graphics/SKILL.md` |
 | Pure concat / trim of source clips, no composition needed | **ffmpeg** | `skills/core/ffmpeg.md` |
 | Riso / cut-paper / crosshatch / sketchbook / pixel / isometric look, or a look matched from references, as a short morph-chain story | **ffmpeg** (the `animate` plugin renders its own MP4; OpenMontage ingests it) | `skills/creative/animate-procedural.md` |
+| A named code-rendered film style (painting, print, era, cartoon, game, 3D, keynote) or an evidence/documentary film from real material (satellite, archive, scans, CAD) | **ffmpeg** (the `lemo-opuscar` plugin renders and masters its own MP4; OpenMontage ingests it) | `skills/creative/opuscar-film.md` |
 | Selected runtime is unavailable | **escalate** — do not substitute silently | `AGENT_GUIDE.md` → Escalate Blockers |
 
 Read `skills/core/hyperframes.md` for the full Remotion-vs-HyperFrames

@@ -1,0 +1,1 @@
+User: "but before that I need to give me the details of kokoro tts, how do I access and use. I am going to give it to another agent". Verified via tool result: `217:        endpoint = "/dev/captioned_speech" if want_words else "/v1/audio/speech"` and health check `health 200`, followed by a live synthesis of a short test line.

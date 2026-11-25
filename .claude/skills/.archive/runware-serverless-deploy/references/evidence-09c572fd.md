@@ -1,0 +1,1 @@
+"Runware serverless ... draws on its own prepaid credit balance, separate from the balance your inference requests use" was the assistant's stated answer; user message: "I added funds, but it was added in inference, but I want to use the serverless. can I transfer ? to serverless the balance or refund the money."

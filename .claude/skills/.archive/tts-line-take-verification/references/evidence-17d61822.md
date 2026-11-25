@@ -1,0 +1,1 @@
+replace ['fifteen'] -> ['15'] ; .replace("6,000","six thousand") ; ASR gate needed "calms"→"quiets" and an `asr` override for "6,000"

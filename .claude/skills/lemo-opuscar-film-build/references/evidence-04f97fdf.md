@@ -1,0 +1,1 @@
+word accuracy ~ 0.988 / replace ['jumped'] -> ['jump'] / replace ['fifteen'] -> ['15'] ; s.lower().replace("6,000","six thousand").replace("center","centre")

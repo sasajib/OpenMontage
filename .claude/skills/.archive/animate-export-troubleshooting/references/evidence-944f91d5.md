@@ -1,0 +1,2 @@
+Bash: cd /home/sasajib/Desktop/workspaces/OpenMontage && SKILL=~/.claude/plugins/cache/animate/animate/0.4.0/skills/animate && P=projects/nasreddin-donkey-not-home/animate/pieces/donkey-riso && df -h / | tail -1 && node $SKILL/tools/export.mjs $P --share > $P/export.log 2>&1; echo "export exit $?"; tail -5 $P/export.log; node $SKILL/tools/review.mjs $P > $P/review.txt 2>&1; echo "review exit $?"; rm -rf $P/frames; df -h / | tail -1; ls -la $P/renders
+Output: "/dev/sdb2 224G 207G 12G 95% /" ... "export exit 0" ... "review exit 0" ... "wrote .../renders/share.mp4"

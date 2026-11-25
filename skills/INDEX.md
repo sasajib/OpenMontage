@@ -102,6 +102,9 @@ Key capability families to look for in the output:
 | Data Visualization | `creative/data-visualization.md` | Chart type selection, animation, label placement | `d3-viz`, `remotion-best-practices` |
 | Video Stitching | `creative/video-stitching.md` | Multi-clip assembly, AI clip chaining, spatial composition | `ffmpeg`, `video-toolkit` |
 | Video Gen Prompting | `creative/video-gen-prompting.md` | Universal video generation prompt vocabulary; **canonical 5-aspect spec** (Subject / Motion / Scene / Spatial / Camera); ~200 cinematography primitives | `ai-video-gen`, `ltx2`, `create-video` |
+| Camera Direction | `creative/camera-direction.md` | Pick shot size, camera angle and one camera move per generated shot (intent tables), check they fit, map to `shot_language`, write still + video prompts, sample and review | `camera-movement-prompts` |
+| Virtual Camera | `creative/virtual-camera.md` | Camera for code-rendered scenes (HyperFrames, Remotion, plugins): depth planes, one camera line per scene, speed numbers, easing, cuts between moving shots, handheld/shake, strip check | `hyperframes-animation`, `gsap-core` |
+| Hook and Retention | `creative/hook-and-retention.md` | **Binding gate** at script, scene_plan and compose: five scored hooks, retention map, open loops, line lint, pacing numbers, measured checks on the render | — |
 | â†³ Seedance Prompting | `creative/prompting/seedance-prompting.md` | **Preferred premium default.** Seedance 2.0 8-component structure, multi-shot, lip-sync, reference-to-video | `seedance-2-0`, `ai-video-gen` |
 | â†³ Grok Prompting | `creative/prompting/grok-prompting.md` | Grok image/video prompting, edit flows, reference-image video | `grok-media` |
 | â†³ Sora Prompting | `creative/prompting/sora-prompting.md` | Sora 2 structured template, advanced fields | `ai-video-gen` |

@@ -1,0 +1,1 @@
+.venv/bin/python - ... write_checkpoint(PROJECTS_DIR,P,"edit","completed",{"edit_decisions":ed},pipeline_type=PT,metadata={"review":{"G6":"PASS","note":"concurrency lowered 8->4 to match CPU cores"}})

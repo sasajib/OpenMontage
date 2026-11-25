@@ -131,8 +131,41 @@ Recommended metadata keys:
 >
 > Log the (pre, critique, post) triplet in the asset metadata for traceability. This mirrors the CHAI workflow and creates a record the reviewer can audit.
 
+### 4b. Reality-Check Gate (HARD — binding, user rule 2026-11-07)
+
+Video generation is the expensive step. A still that is beautiful but physically wrong turns into
+ten seconds of AI slop and a wasted clip. So **no generated still feeds an image-to-video job, and
+no clip enters the edit, until it has passed the reality check** in
+`.claude/skills/generated-visual-anatomy-qa/SKILL.md` (sections A and B):
+
+1. **Stills, at full resolution, before any clip is requested.** Trace every rope, strap, cable
+   and tool from entry to exit; every piece of gear seated the way the real thing is; every prop
+   something the character would actually have there (no flagpole on a summit); surfaces show the
+   conditions (ice, dust, wet); only the planned people in frame; shot size, angle and frame edges
+   as the scene plan says. Count arms, hands, legs.
+2. **Mechanism shots get two takes, then a redesign** (rope through carabiner, knots, buckles,
+   screws): show the force instead of the hardware.
+3. **Clips, at >= 1 frame per second.** Anatomy in every frame; wardrobe and light continuous
+   with the still (a suit that changes colour mid-clip is a fail); the camera did the named move
+   and not a look-alike; subject not stepping into thin air or passing through geometry. Use only
+   the clean window; record the trim; a clip with no clean window is regenerated.
+4. **Run the tool, then look.** `reality_check` (`.claude/skills/video-reality-check/SKILL.md`) runs the
+   anatomy / identity / continuity / camera checks and writes `<asset>.reality/report.md`; its VLM or agent
+   pass is where gear and prop errors get caught. Attach the report path to the asset's `generation_summary`.
+   For sound run `audio_check` the same way: `lines` on every TTS take, `music` on every cue (with the music plan's
+   silence windows and builds), and `mix` on the render before publish (LUFS/true peak for the platform, every line
+   re-transcribed from the mix, music ducked under speech).
+5. **Evidence or it did not happen.** The assets checkpoint summary must list: stills viewed,
+   failed and why, regenerated, redesigned; clips viewed, failed and why, trims. The reviewer
+   treats missing evidence as CRITICAL and the gate does not pass.
+
+The provider's own "checked, matches the description" note is not evidence; only your trace is.
+
+**Order matters (cost ladder, user rule 2026-11-07):** still -> check -> clip -> check -> edit -> render -> final check. Every check happens at the cheapest point that can catch the defect: a bad still costs one image, a bad clip costs one generation, a bad render costs the whole compose. Never request a clip from an unchecked still, and never start a render with an unchecked clip in the timeline. The post-render review (`final_review`) is a last net, not the gate.
+
 ### 5. Quality Gate
 
+- the Reality-Check Gate above has passed with evidence,
 - source and support assets are clearly distinguished,
 - generated inserts are limited and purposeful,
 - audio plan matches the beat map,

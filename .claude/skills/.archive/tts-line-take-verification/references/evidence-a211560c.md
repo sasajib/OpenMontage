@@ -1,0 +1,3 @@
+l6: REJECT 179 wpm 2.88 s Basecamp, there is nowhere left to climb. ["179 wpm but the cue is 'slow' (0-135)"]
+Re-take at speed 0.7 with pauses: l6: 119 wpm 4.13 s | base camp, there is nowhere left to climb. | findings: [('l6', 'line is 4.13 s, slot is 3.5 s')]
+assistant: "Last line now 119 wpm ("slow" band), 4.1 s — I'll widen its slot to 61.3 s ... Adding per-line ducking of music, wind and clip audio to the composition, then re-rendering."

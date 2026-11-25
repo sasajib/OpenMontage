@@ -12,6 +12,7 @@ Do not use this pipeline when the project is really footage-led with a few overl
 - `skills/creative/storytelling.md`
 - `skills/creative/ink-theater.md` — for hand-drawn **ink "doodle"** briefs: a character that draws itself and performs, or a deadpan contraption explainer (Ink Theater engine + Ink Puppet mocap; command `/ink-art`). A stick/pencil character that walks or dances belongs in the `character-animation` pipeline.
 - `skills/creative/animate-procedural.md` — for **printed / hand-made** looks (riso print, cut paper, crosshatch ink, sketchbook, pixel, isometric, manim-style math) or a look matched from the user's references, built as a deterministic single-canvas piece by the `animate` plugin and ingested as a clip (`render_runtime: ffmpeg`). Style + engine, not a pipeline.
+- `skills/creative/opuscar-film.md` — for a **named film style** from the Lemo-Opuscar catalog (66 looks: watercolor, ink wash, ukiyo-e, newsreel, Swiss motion, blueprint, hologram HUD, pixel RPG…) or an explainer from **real material** (satellite, archive footage, scans, CAD), rendered frame by frame from code by the `lemo-opuscar` plugin and ingested as a clip (`render_runtime: ffmpeg`). Style + engine, not a pipeline.
 
 ## Process
 

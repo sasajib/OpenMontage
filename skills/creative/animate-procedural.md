@@ -20,11 +20,11 @@ Present it at proposal as one of the runtime options (the HARD RULE in `AGENT_GU
 ## Locate the engine
 
 ```bash
-SKILL=$(ls -d ~/.claude/plugins/cache/animate/animate/*/skills/animate | tail -1)
+SKILL=.claude/skills/animate   # repo copy of the plugin skill (run from the repo root); upstream clone: vendor/animate
 node -e "require('$(npm root -g)/playwright')" && ffmpeg -version | head -1   # both must work
 ```
 
-If the plugin is missing: `claude plugin marketplace add cth9191/animate && claude plugin install animate@animate`, then `npm i -g playwright && npx playwright install chromium`. Escalate instead of substituting another engine if that fails.
+If the skill folder is missing, copy it from `vendor/animate/plugins/animate/skills/animate` (`git -C vendor/animate pull` to update first). If Playwright is missing: `npm i -g playwright && npx playwright install chromium`. Escalate instead of substituting another engine if that fails.
 
 Read `$SKILL/SKILL.md` and `$SKILL/craft.md` before authoring, and the chosen style's `$SKILL/styles/<style>/STYLE.md` (its rules + frame checklist). The style gallery for the user: `node $SKILL/tools/gallery.mjs <out.png>`.
 

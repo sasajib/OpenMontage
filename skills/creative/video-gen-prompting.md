@@ -91,6 +91,8 @@ Empirical sweet spots from the paper's Section 6 findings — different models r
 
 ## Camera Movements
 
+> **Choosing shot size, angle and move, with exact wording:** `skills/creative/camera-direction.md` (intent tables, fit checks, `shot_language` mapping, review), the 46 copy-ready movement prompts in `.agents/skills/camera-movement-prompts/SKILL.md`, and shot/angle example prompts in its `references/shots-and-angles.md`.
+
 The paper shows current models confuse translation, rotation, and lens-only changes — group your prompts so the model can't conflate them:
 
 | Group | Primitives | Rule |

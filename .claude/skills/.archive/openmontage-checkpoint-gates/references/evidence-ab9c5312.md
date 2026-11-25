@@ -1,0 +1,1 @@
+sed -i 's/"category": "quality_gate"/"category": "visual_accuracy_check"/g' projects/rise-of-facebook-cinematic/scripts/finalize.py && PYTHONPATH=. .venv/bin/python projects/rise-of-facebook-cinematic/scripts/finalize.py  (description: "Fix decision category and run finalize")

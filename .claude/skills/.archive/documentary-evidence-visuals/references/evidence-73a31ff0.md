@@ -1,0 +1,1 @@
+naration voice is unatural - use a more deep voice with natural tone, also last part of the video is just background color which made the video ai slop so can we please fix those

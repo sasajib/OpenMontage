@@ -1,0 +1,1 @@
+Bash result: "/home/sasajib/Desktop/workspaces/OpenMontage/.venv/bin/python: No module named pytest". Bash result after the uv run: "FAILED tests/contracts/test_agent_skill_pointers.py::test_agent_skill_pointer_resolves[audio_check-video-reality-check] ... 3 failed, 1272 passed, 7 skipped in 67.29s (0:01:07)". Manifest check result: "animation ok 8 / cinematic ok 8".

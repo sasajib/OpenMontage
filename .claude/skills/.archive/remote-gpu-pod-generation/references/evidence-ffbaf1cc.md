@@ -1,0 +1,1 @@
+{"type":"last-prompt","lastPrompt":"we have runpod serverless - why do we need pod?","leafUuid":"f970fb0a-4f52-4806-8105-89a4db5da0c8","sessionId":"ef294439-0dca-45a7-bc59-7b705c88ea07"}

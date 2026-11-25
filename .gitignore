@@ -123,3 +123,6 @@ gfpgan/
 .claude/skills/**/.sidecar.json.lock
 .claude/skills/**/.ledger.jsonl
 chrome-headless-shell/
+
+# reality_check MediaPipe task files (downloaded, see tools/analysis/reality_check.py install_instructions)
+models/reality_check/

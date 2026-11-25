@@ -1,0 +1,1 @@
+$ df -h / | tail -1 → /dev/sdb2 224G 210G 9.1G 96% /  ; and "96M	projects/nasreddin-donkey-not-home/animate/pieces/donkey-isometric/frames" followed by rm -rf $P/frames; rm -f $P/review-still-d.png
